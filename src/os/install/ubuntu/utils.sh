@@ -13,6 +13,12 @@ add_key() {
 
 }
 
+add_key_raw() {
+
+    sudo apt-key adv --keyserver $1 --recv-keys $2
+
+}
+
 add_ppa() {
     sudo add-apt-repository -y ppa:"$1" &> /dev/null
 }
@@ -69,5 +75,10 @@ upgrade() {
         "export DEBIAN_FRONTEND=\"noninteractive\" \
             && sudo apt-get -o Dpkg::Options::=\"--force-confnew\" upgrade -qqy" \
         "APT (upgrade)"
+
+    execute \
+        "export DEBIAN_FRONTEND=\"noninteractive\" \
+            && sudo apt-get -o Dpkg::Options::=\"--force-confnew\" dist-upgrade -qqy" \
+        "APT (dist-upgrade)"
 
 }

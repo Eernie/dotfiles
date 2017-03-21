@@ -43,7 +43,7 @@ alias local-ip="ifconfig \
 
 # Open from the terminal.
 
-alias o="xdg-open"
+alias open="xdg-open"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -26,12 +26,6 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    printf "\n"
-
-    install_npm_package "!nstant-markdown-d" "instant-markdown-d"
-    install_npm_package "Babel" "babel-cli"
-    install_npm_package "JSHint" "jshint"
-
 }
 
 main

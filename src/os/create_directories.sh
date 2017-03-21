@@ -8,7 +8,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 create_directories() {
 
     declare -a DIRECTORIES=(
-        "$HOME/Downloads/torrents"
+        # "$HOME/Downloads/torrents"
+        "$HOME/workspace",
+        "$HOME/Apps"
     )
 
     for i in "${DIRECTORIES[@]}"; do
