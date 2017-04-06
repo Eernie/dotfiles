@@ -46,6 +46,23 @@ install_apps() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    if ! package_is_installed "enpass"; then
+
+        add_key "https://dl.sinew.in/keys/enpass-linux.key" \
+            || print_error "Enpass (add key)"
+
+        add_to_source_list "http://repo.sinew.in/ stable main" "enpass.list" \
+            || print_error "Enpass (add to package resource list)"
+
+        update &> /dev/null \
+            || print_error "Enpass (resync package index files)"
+
+    fi
+
+    install_package "Enpass" "enpass"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     if ! package_is_installed "yarn"; then
 
         add_key "https://dl.yarnpkg.com/debian/pubkey.gpg" \
