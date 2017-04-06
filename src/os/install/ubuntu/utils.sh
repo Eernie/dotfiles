@@ -15,7 +15,7 @@ add_key() {
 
 add_key_raw() {
 
-    sudo apt-key adv --keyserver $1 --recv-keys $2
+    sudo apt-key adv --keyserver $1 --recv-keys $2 &> /dev/null
 
 }
 

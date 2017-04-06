@@ -54,8 +54,8 @@ create_gitconfig_local() {
 
 [user]
 
-    name =
-    email =
+    name =Erwin Oldenkamp
+    email =github@eernie.nl
     # signingkey =" \
         >> "$FILE_PATH"
     fi

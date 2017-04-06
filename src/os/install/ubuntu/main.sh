@@ -29,7 +29,7 @@ install_apps() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if ! package_is_installed "google-chrome"; then
+    if ! package_is_installed "google-chrome-stable"; then
 
         add_key "https://dl-ssl.google.com/linux/linux_signing_key.pub" \
             || print_error "Chrome Canary (add key)"
@@ -42,7 +42,7 @@ install_apps() {
 
     fi
 
-    install_package "Chrome" "google-chrome"
+    install_package "Chrome" "google-chrome-stable"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -51,7 +51,7 @@ install_apps() {
         add_key "https://dl.yarnpkg.com/debian/pubkey.gpg" \
             || print_error "Yarn (add key)"
 
-        add_to_source_list "deb https://dl.yarnpkg.com/debian/ stable main" "yarn.list" \
+        add_to_source_list "https://dl.yarnpkg.com/debian/ stable main" "yarn.list" \
             || print_error "Yarn (add to package resource list)"
 
         update &> /dev/null \
@@ -68,7 +68,7 @@ install_apps() {
         add_key_raw "hkp://keyserver.ubuntu.com:80" "BBEBDCB318AD50EC6865090613B00F1FD2C19886" \
             || print_error "Spotify (add key)"
 
-        add_to_source_list "deb http://repository.spotify.com stable non-free" "spotify.list" \
+        add_to_source_list "http://repository.spotify.com stable non-free" "spotify.list" \
             || print_error "Spotify (add to package resource list)"
 
         update &> /dev/null \
@@ -76,21 +76,43 @@ install_apps() {
 
     fi
 
-    install_package "Spotify" "spotify"
+    install_package "Spotify" "spotify-client"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if ! package_is_installed "oracle-java8-installer"; then
 
-        add_ppa "ppa:webupd8team/java" \
+        add_ppa "webupd8team/java" \
             || print_error "Java8 (add key)"
 
         update &> /dev/null \
             || print_error "Java8 (resync package index files)"
 
+	echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+
+	echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+
     fi
 
     install_package "Java8" "oracle-java8-installer"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    if ! package_is_installed "atom"; then
+
+        add_ppa "webupd8team/atom" \
+            || print_error "Atom (add key)"
+
+        update &> /dev/null \
+            || print_error "Atom (resync package index files)"
+
+    fi
+
+    install_package "Atom" "atom"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    install_package "Maven" "maven"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -124,8 +146,12 @@ install_apps() {
 
     install_package "Zsh" "zsh"
 
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	execute "git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh" "Oh-My-zsh"
+        chsh -s /bin/zsh
+    else
+        print_success "Oh-My-zsh"
+    fi
 }
 
 main() {
