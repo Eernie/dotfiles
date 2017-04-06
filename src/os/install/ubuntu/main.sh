@@ -144,6 +144,10 @@ install_apps() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    install_package "Terminator" "terminator"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     install_package "Zsh" "zsh"
 
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
