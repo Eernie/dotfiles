@@ -60,7 +60,7 @@ alias local-ip="sudo ifconfig \
 
 # Open from the terminal.
 
-alias open="xdg-open"
+alias open="gio open"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

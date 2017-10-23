@@ -50,8 +50,8 @@ open_github_ssh_page() {
     # The order of the following checks matters
     # as on Ubuntu there is also a utility called `open`.
 
-    if cmd_exists "xdg-open"; then
-        xdg-open "$GITHUB_SSH_URL"
+    if cmd_exists "gio"; then
+        gio open "$GITHUB_SSH_URL"
     elif cmd_exists "open"; then
         open "$GITHUB_SSH_URL"
     else

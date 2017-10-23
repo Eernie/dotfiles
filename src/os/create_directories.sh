@@ -9,7 +9,7 @@ create_directories() {
 
     declare -a DIRECTORIES=(
         # "$HOME/Downloads/torrents"
-        "$HOME/workspace",
+        "$HOME/workspace"
         "$HOME/Apps"
     )
 
