@@ -8,4 +8,4 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 print_in_purple "\n   Image Tools\n\n"
 
-brew_install "Darktable" "darktable"
+brew_install "Darktable" "darktable" "homebrew/cask" "cask"
