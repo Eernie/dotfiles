@@ -9,7 +9,7 @@ create_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
 
-        "shell/aliases/aliases"
+        "shell/aliases/bash_aliases"
         "shell/curlrc"
         "shell/inputrc"
         "shell/zshrc"
