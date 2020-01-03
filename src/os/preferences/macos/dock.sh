@@ -47,7 +47,7 @@ execute "defaults write com.apple.dock show-recents -bool false" \
 execute "defaults write com.apple.dock showhidden -bool true" \
     "Make icons of hidden applications translucent"
 
-execute "defaults write com.apple.dock tilesize -int 60" \
+execute "defaults write com.apple.dock tilesize -int 40" \
     "Set icon size"
 
 killall "Dock" &> /dev/null
