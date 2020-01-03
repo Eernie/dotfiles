@@ -14,6 +14,7 @@ brew_install "Intellij" "intellij-idea" "homebrew/cask" "cask"
 brew_install "VyprVPN" "vyprvpn" "homebrew/cask" "cask"
 brew_install "Enpass" "enpass" "homebrew/cask" "cask"
 brew_install "Iterm2" "iterm2" "homebrew/cask" "cask"
+brew_install "Spotify" "spotify" "homebrew/cask" "cask"
 brew_install "Zsh" "zsh"
 
 if [! -d "$HOME/.oh-my-zsh"]; then
