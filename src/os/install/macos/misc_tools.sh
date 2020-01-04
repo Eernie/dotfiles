@@ -17,7 +17,7 @@ brew_install "Iterm2" "iterm2" "homebrew/cask" "cask"
 brew_install "Spotify" "spotify" "homebrew/cask" "cask"
 brew_install "Zsh" "zsh"
 
-if [! -d "$HOME/.oh-my-zsh"]; then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
     execute "sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" \"\" --unattende" "Oh-My-Zsh"
 else
     print_success "Oh-My-Zsh"
