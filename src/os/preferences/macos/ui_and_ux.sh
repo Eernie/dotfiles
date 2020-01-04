@@ -11,10 +11,10 @@ execute "defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool
          defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true" \
    "Avoid creating '.DS_Store' files on network or USB volumes"
 
-execute "defaults write com.apple.menuextra.battery ShowPercent -string 'NO'" \
+execute "defaults write com.apple.menuextra.battery ShowPercent -string 'YES'" \
     "Hide battery percentage from the menu bar"
 
-execute "sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true" \
+execute "sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool false" \
     "Show language menu in the top right corner of the boot screen"
 
 execute "defaults write com.apple.CrashReporter UseUNC 1" \
@@ -75,10 +75,10 @@ execute "defaults write -g QLPanelAnimationDuration -float 0" \
 execute "defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false" \
     "Disable resume system-wide"
 
-execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string 'Laptop' && \
-         sudo scutil --set ComputerName 'laptop' && \
-         sudo scutil --set HostName 'laptop' && \
-         sudo scutil --set LocalHostName 'laptop'" \
+execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string 'elric' && \
+         sudo scutil --set ComputerName 'elric' && \
+         sudo scutil --set HostName 'elric' && \
+         sudo scutil --set LocalHostName 'elric'" \
     "Set computer name"
 
 execute "sudo systemsetup -setrestartfreeze on" \
