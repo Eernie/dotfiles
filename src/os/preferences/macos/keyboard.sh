@@ -33,3 +33,5 @@ execute "defaults write -g NSAutomaticDashSubstitutionEnabled -bool false" \
 
 execute "defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false" \
     "Disable smart quotes"
+
+execute "sh tildeswitch.sh" "Switch tilde key"
