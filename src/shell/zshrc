@@ -13,7 +13,7 @@ ZSH_THEME="rkj-repos"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git mvn java nvm docker docker-compose)
+plugins=(git mvn nvm docker docker-compose nvm-auto)
 
 source ~/.aliases
 source ~/.zsh.local
