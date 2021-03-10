@@ -75,10 +75,14 @@ execute "defaults write -g QLPanelAnimationDuration -float 0" \
 execute "defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false" \
     "Disable resume system-wide"
 
-execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string 'elric' && \
-         sudo scutil --set ComputerName 'elric' && \
-         sudo scutil --set HostName 'elric' && \
-         sudo scutil --set LocalHostName 'elric'" \
+declare HOSTNAME=$(hostname)
+ask "Give up hostname [$HOSTNAME]: " && printf "\n"
+declare NEW_HOSTNAME=$(get_answer)
+
+execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '$NEW_HOSTNAME' && \
+         sudo scutil --set ComputerName '$NEW_HOSTNAME' && \
+         sudo scutil --set HostName '$NEW_HOSTNAME' && \
+         sudo scutil --set LocalHostName '$NEW_HOSTNAME'" \
     "Set computer name"
 
 execute "sudo systemsetup -setrestartfreeze on" \
