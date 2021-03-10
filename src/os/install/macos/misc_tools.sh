@@ -9,12 +9,12 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 print_in_purple "\n   Miscellaneous Tools\n\n"
 
 brew_install "ShellCheck" "shellcheck"
-#brew_install "Visual Studio Code" "visual-studio-code" "homebrew/cask" "cask"
-brew_install "Intellij" "intellij-idea" "homebrew/cask" "cask"
-brew_install "VyprVPN" "vyprvpn" "homebrew/cask" "cask"
-brew_install "Enpass" "enpass" "homebrew/cask" "cask"
-brew_install "Iterm2" "iterm2" "homebrew/cask" "cask"
-brew_install "Spotify" "spotify" "homebrew/cask" "cask"
+#brew_install "Visual Studio Code" "visual-studio-code" "--cask"
+brew_install "Intellij" "intellij-idea" "--cask"
+brew_install "VyprVPN" "vyprvpn" "--cask"
+brew_install "Enpass" "enpass" "--cask"
+brew_install "Iterm2" "iterm2" "--cask"
+brew_install "Spotify" "spotify" "--cask"
 brew_install "Zsh" "zsh"
 
 execute "chsh -s /bin/zsh" "Default Zsh"
