@@ -1,0 +1,112 @@
+#!/bin/bash
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cd..="cd .."
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+alias g="git"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ll="ls -l"
+alias q="exit"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Lock screen.
+
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Shorter commands for `Homebrew`.
+
+alias brewd="brew doctor"
+alias brewi="brew install"
+alias brewr="brew uninstall"
+alias brews="brew search"
+alias brewu="brew update \
+                && brew upgrade \
+                && brew cleanup"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Clear DNS cache.
+
+alias clear-dns-cache="sudo dscacheutil -flushcache; \
+                       sudo killall -HUP mDNSResponder"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Empty the trash, the main HDD and on all mounted volumes,
+# and clear Apple’s system logs to improve shell startup speed.
+
+alias empty-trash="sudo rm -frv /Volumes/*/.Trashes; \
+                   sudo rm -frv ~/.Trash; \
+                   sudo rm -frv /private/var/log/asl/*.asl; \
+                   sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Hide/Show desktop icons.
+
+alias hide-desktop-icons="defaults write com.apple.finder CreateDesktop -bool false \
+                            && killall Finder"
+
+alias show-desktop-icons="defaults write com.apple.finder CreateDesktop -bool true \
+                            && killall Finder"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Get local IP.
+
+alias local-ip="ipconfig getifaddr en1"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Open from the terminal.
+
+alias o="open"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Update applications and CLTs.
+
+alias u="sudo softwareupdate --install --all \
+            && brew update \
+            && brew upgrade \
+            && brew cleanup"
+
+
+alias cleantargets="rm -r target || true && rm -r */target || true"
+alias publishLocal="sbt clean update package +publishLocal"
+alias testCoverage="sbt clean update compile coverage test coverageReport"
+
+###############
+# Java Switcher
+###############
+alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
+
+###############
+# Kubectl
+###############
+showRunningImages() {
+  kubectl get pods -n $1 -o jsonpath="{..image}" |\
+  tr -s '[[:space:]]' '\n' |\
+  sort |\
+  uniq -c
+}
+watchDeploy(){
+  watch -n1 kubectl -n "${1:-zd5}" get deploy
+}
+watchPods(){
+  watch -n1 kubectl -n "${1:-zd5}" get pods
+}
+
+alias fwpg="kubectl -n local port-forward svc/postgresql 5432:5432"
+alias fwes="kubectl -n local port-forward svc/elasticsearch-cluster 9200:9200"
+alias fwaq="kubectl -n local port-forward deploy/activemq 8161:8161"
+alias zd-toolbox="sh ~/workspace/zd-toolbox/target/pack/bin/zd-toolbox"
