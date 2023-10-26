@@ -38,6 +38,8 @@ cask "slack"
 cask "fluxcd/tap/flux"
 EOF
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 bw config server "https://vault.falkenkamp.nl"
 if [ ! -f /Users/erwin/key.txt ]
 then
